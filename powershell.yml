@@ -1,0 +1,5 @@
+---
+- hosts: TOWER.HOME.COM
+  tasks:
+    - name: Execute PowerShell script
+      command: pwsh /home/ansible/execute.ps1
