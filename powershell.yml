@@ -11,6 +11,6 @@
       rescue:
         - name: Debug
           debug:
-            msg: "Error Occured - {{output.stout}}"
+            msg: "Error Occured - {{output.stdout}}"
           
       
