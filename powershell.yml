@@ -3,5 +3,5 @@
   gather_facts: no
   tasks:
     - name: Execute PowerShell script
-      command: pwsh /home/ansible/execute.ps1
+      command: pwsh /home/ansible/execute.ps1 "{{ serverName }}"
       
