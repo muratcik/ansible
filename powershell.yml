@@ -5,10 +5,12 @@
     - name: Main Block
       block: 
         - name: Execute PowerShell script
+          ignore_errors: False
+          register: output
           command: pwsh /home/ansible/execute.ps1 "{{ serverName }}" "{{ serviceName }}"
       rescue:
         - name: Debug
           debug:
-            msg: "Error Occured"
+            msg: "Error Occured - {{output.stout}}"
           
       
