@@ -1,7 +1,14 @@
 ---
 - hosts: TOWER.HOME.COM
-  gather_facts: no
+  gather_facts: no   
   tasks:
-    - name: Execute PowerShell script
-      command: pwsh /home/ansible/execute.ps1 "{{ serverName }}" "{{ serviceName }}"
+    - name: Main Block
+      block: 
+        - name: Execute PowerShell script
+          command: pwsh /home/ansible/execute.ps1 "{{ serverName }}" "{{ serviceName }}"
+      rescue:
+        - name: Debug
+          debug:
+            msg: "Hello World"
+          
       
