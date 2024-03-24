@@ -6,11 +6,11 @@
       register: output1
       command: pwsh "/home/ansible/{{ scriptName }}" "{{ serverName }}" "{{ param1 }}"
     - name: Debug
-        debug:
-          msg: "OutPut - {{output1.stdout}}"        
+      debug:
+        msg: "OutPut - {{output1.stdout}}"        
     - name: Block2      
       register: output2
       command: pwsh "/home/ansible/{{ scriptName }}" "{{ serverName }}" "{{ param2 }}"
     - name: Debug
-        debug:
-          msg: "OutPut - {{output2.stdout}}"     
+      debug:
+        msg: "OutPut - {{output2.stdout}}"     
