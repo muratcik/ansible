@@ -2,7 +2,7 @@
 - hosts: TOWER.HOME.COM
   gather_facts: no   
   tasks:
-    - name: Main Block
+    - name: Block1
       block: 
         - name: Execute PowerShell script
           ignore_errors: False
@@ -12,5 +12,15 @@
         - name: Debug
           debug:
             msg: "Error Occured - {{output.stdout}}"
+    - name: Block2
+      block: 
+        - name: Execute PowerShell script
+          ignore_errors: False
+          register: output
+          command: pwsh "/home/ansible/{{ scriptName }}" "{{ serverName }}" "{{ param2 }}"
+      rescue:
+        - name: Debug
+          debug:
+            msg: "Error Occured - {{output.stdout}}"       
           
       
