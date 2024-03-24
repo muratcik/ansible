@@ -1,11 +1,18 @@
 ---
-- name: create a windows user
-  hosts: win
-  tasks: 
-    - name: create windows users
-      win_user:
-        name: linda
-        password: "@nsible123"
-        state: present
-        groups: 
-          - Users
+- hosts: TOWER.HOME.COM
+  gather_facts: no   
+  tasks:
+    - name: Block1
+      ignore_errors: False
+      register: output1
+      command: pwsh "/home/ansible/{{ scriptName }}" "{{ serverName }}" "{{ param1 }}"
+    - name: Debug
+        debug:
+          msg: "OutPut - {{output1.stdout}}"        
+    - name: Block2
+      ignore_errors: False
+      register: output2
+      command: pwsh "/home/ansible/{{ scriptName }}" "{{ serverName }}" "{{ param2 }}"
+    - name: Debug
+        debug:
+          msg: "OutPut - {{output2.stdout}}"     
