@@ -3,5 +3,5 @@
   hosts: murry
   tasks:
     - name: Run a simple PowerShell command
-      ansible.windows.win_powershell:
-        script: Stop-Service MySQL80
+      win_shell: |
+        Stop-Service MySQL80
