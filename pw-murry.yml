@@ -1,0 +1,7 @@
+---
+- name: Execute PowerShell command on Windows hosts
+  hosts: murry
+  tasks:
+    - name: Run a simple PowerShell command
+      ansible.windows.win_powershell:
+        script: Stop-Service MySQL80
