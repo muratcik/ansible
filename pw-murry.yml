@@ -3,5 +3,4 @@
   hosts: murry
   tasks:
     - name: Run a simple PowerShell command
-      win_shell: |
-        Stop-Service MySQL80
+      win_shell: D:\scripts\stop.ps1
