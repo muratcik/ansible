@@ -4,12 +4,14 @@
   vars:
       sleepsec: 10
   tasks:
-    - name: Stop MySQL80 service
-      win_service:
-        name: "{{ item }}"
-        state: stopped
-      loop:
-        - MySQL*
+    - name: Get all services starting with 'SQL'
+    win_service_info:
+        name: 'SQL*'
+    register: services
+    - name: Debug
+    debug:
+        var: "services"
+    register: services
     - name: Pause for 10 seconds
       pause:
         seconds: "{{ sleepsec }}"   
