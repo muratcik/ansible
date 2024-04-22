@@ -1,9 +1,11 @@
 ---
 - name: Get info for all services starting with 'SQL'
-  hosts: windows
+  hosts: win
+  collections:
+    - ansible.windows
   tasks:
     - name: Get service info
-      ansible.windows.win_service_info:
+      win_service_info:
         name: 'SQL*'
       register: service_info
 
