@@ -1,21 +1,12 @@
 ---
-- name: Stop MySQL80 service
-  hosts: win
-  collections:
-    - ansible.windows
-  vars:
-      sleepsec: 10
+- name: Get info for all services starting with 'SQL'
+  hosts: windows
   tasks:
-    - name: Get all services starting with 'SQL'
-      win_service_info:
+    - name: Get service info
+      ansible.windows.win_service_info:
         name: 'SQL*'
-      register: services
-    - name: Debug
+      register: service_info
+
+    - name: Output service info
       debug:
-        var: "services"    
-    - name: Pause for 10 seconds
-      pause:
-        seconds: "{{ sleepsec }}"   
-    - name: Start MySQL80 service  
-      win_shell: |
-        Start-Service -Name MySQL80
+        var: service_info
