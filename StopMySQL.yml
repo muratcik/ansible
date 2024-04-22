@@ -7,5 +7,5 @@
         name: MySQL80
         state: stopped
     - name: Start MySQL80 service  
-        win_shell: |
+      win_shell: |
         Start-Service -Name MySQL80
