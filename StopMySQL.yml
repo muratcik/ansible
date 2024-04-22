@@ -1,6 +1,8 @@
 ---
 - name: Stop MySQL80 service
   hosts: win
+  vars:
+      sleepsec: 10
   tasks:
     - name: Stop MySQL80 service
       win_service:
@@ -8,6 +10,9 @@
         state: stopped
       loop:
         - MySQL*
+    - name: Pause for 10 seconds
+      pause:
+        seconds: "{{ sleepsec }}"   
     - name: Start MySQL80 service  
       win_shell: |
         Start-Service -Name MySQL80
