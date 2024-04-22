@@ -1,0 +1,8 @@
+---
+- name: Stop MySQL80 service
+  hosts: windows_servers
+  tasks:
+    - name: Stop MySQL80 service
+      win_service:
+        name: MySQL80
+        state: stopped
