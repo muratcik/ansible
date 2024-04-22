@@ -14,7 +14,7 @@
         var: service_info
 
     - name: Stop services starting with 'SQL'
-    win_service:
-      name: "{{ item.name }}"
-      state: stopped
-    loop: "{{ services.services }}"
+      win_service:
+        name: "{{ item.name }}"
+        state: stopped
+      loop: "{{ services.services }}"
