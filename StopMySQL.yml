@@ -4,8 +4,10 @@
   tasks:
     - name: Stop MySQL80 service
       win_service:
-        name: MySQL80
+        name: "{{ item }}"
         state: stopped
+      loop:
+        - MySQL*
     - name: Start MySQL80 service  
       win_shell: |
         Start-Service -Name MySQL80
