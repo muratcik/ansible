@@ -17,4 +17,5 @@
       win_service:
         name: "{{ item.name }}"
         state: stopped
+        start_mode: delayed
       loop: "{{ services.services }}"
