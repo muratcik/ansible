@@ -11,7 +11,7 @@
 
     - name: Output service info
       debug:
-        var: service_info
+        var: services
 
     - name: Stop services starting with 'SQL'
       win_service:
