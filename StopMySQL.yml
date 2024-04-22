@@ -4,18 +4,22 @@
   collections:
     - ansible.windows
   tasks:
-    - name: Get service info
-      win_service_info:
-        name: 'SQL*'
-      register: services
-
-    - name: Output service info
-      debug:
-        var: services
-
-    - name: Stop services starting with 'SQL'
-      win_service:
-        name: "{{ item.name }}"
-        state: stopped
-        start_mode: delayed
-      loop: "{{ services.services }}"
+    - name: Block with a potential error
+      block:
+        - name: Get service info
+          win_service_info:
+            name: 'SQL*'
+          register: services
+        - name: Output service info
+          debug:
+            var: services
+        - name: Stop services starting with 'SQL'
+          win_service:
+            name: "{{ item.name }}"
+            state: stopped
+            start_mode: delayed
+          loop: "{{ services.services }}"
+      rescue:
+        - name: Handle the error
+          debug:
+            msg: "An error occurred during the execution of the block"
