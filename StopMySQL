@@ -1,6 +1,6 @@
 ---
 - name: Stop MySQL80 service
-  hosts: windows_servers
+  hosts: win
   tasks:
     - name: Stop MySQL80 service
       win_service:
