@@ -5,5 +5,3 @@
     - name: Pause for 5 seconds
       pause:
         seconds: 5
-    - name: This task will fail
-      command: /bin/false
