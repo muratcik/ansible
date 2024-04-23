@@ -1,0 +1,7 @@
+---
+- name: Ansible Playbook with Pause Module
+  hosts: localhost
+  tasks:
+    - name: Pause for 5 seconds
+      pause:
+        seconds: 5
