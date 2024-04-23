@@ -4,4 +4,6 @@
   tasks:
     - name: Pause for 5 seconds
       pause:
-        seconds: 40
+        seconds: 4
+    - name: This task will fail
+      command: /bin/false  
