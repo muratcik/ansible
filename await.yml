@@ -1,5 +1,3 @@
----
-
 - name: Wait for a file to exist on Windows host
   hosts: murry
   tasks:
@@ -9,13 +7,16 @@
         $formattedDate = $date.ToString("MM.dd.yyyy_HH:mm:ss")
         $formattedDate = $formattedDate -replace '[.:]', ''
         $formattedDate += ".txt"
-        Write-Output $formattedDate
+        $formattedDate
       register: result
+    - name: Remove carriage return and newline characters
+      set_fact:
+        formatted_date: "{{ result.stdout | replace('\r\n', '') }}"
     - name: Display formatted date
       debug:
-        msg: "The formatted date is {{ result.stdout }}"
+        msg: "The formatted date is {{ formatted_date }}"
     - name: Wait for file to exist
       win_wait_for:
-        path: D:\delete\{{ result.stdout }}
+        path: "D:\\delete\\{{ formatted_date }}"
         state: present
         timeout: 300  # Adjust timeout as needed (in seconds)
