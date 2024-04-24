@@ -7,6 +7,8 @@
       win_shell: |
         $date = Get-Date
         $formattedDate = $date.ToString("MM.dd.yyyy_HH:mm:ss")
+        $formattedDate = $formattedDate -replace '[.:]', ''
+        $formattedDate += ".txt"
         Write-Output $formattedDate
       register: result
     - name: Display formatted date
@@ -14,6 +16,6 @@
         msg: "The formatted date is {{ result.stdout }}"
     - name: Wait for file to exist
       win_wait_for:
-        path: D:\delete\delete.txt
+        path: "D:\delete\'{{ result.stdout }}'"
         state: present
         timeout: 300  # Adjust timeout as needed (in seconds)
