@@ -3,7 +3,7 @@
   tasks:
     - name: Get current date
       set_fact:
-        timestamp: "{{ lookup('pipe', 'date +%Y-%m-%d_%H-%M-%S') }}.txt"
+        timestamp: "{{ lookup('pipe', 'date +%Y-%m-%d') }}.txt"
     - name: Display formatted date
       debug:
         msg: "The formatted date is {{ timestamp }}"
@@ -12,3 +12,7 @@
         path: "D:\\delete\\{{ timestamp }}"
         state: present
         timeout: 300  # Adjust timeout as needed (in seconds)
+    - name: Delete file if it exists
+      win_file:
+        path: "D:\\delete\\{{ timestamp }}"
+        state: absent    
