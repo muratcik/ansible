@@ -16,6 +16,6 @@
         msg: "The formatted date is {{ result.stdout }}"
     - name: Wait for file to exist
       win_wait_for:
-        path: "D:\delete\{{ result.stdout }}"
+        path: "D:\delete\'{{ result.stdout }}'"
         state: present
         timeout: 300  # Adjust timeout as needed (in seconds)
