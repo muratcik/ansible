@@ -3,7 +3,7 @@
 - name: Wait for a file to exist on Windows host
   hosts: murry
   tasks:
-    - name: Get current date in specified format using PowerShell
+    - name: Get the current date in specified format using PowerShell
       win_shell: |
         $date = Get-Date
         $formattedDate = $date.ToString("MM.dd.yyyy_HH:mm:ss")
