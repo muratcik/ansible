@@ -1,4 +1,28 @@
 ---
+
+- name: Create a variable with Python
+  hosts: localhost
+  tasks:
+    - name: Run Python script and set variable
+      script: |
+        #!/usr/bin/env python
+        import datetime
+        
+        # Your Python logic to calculate or generate the variable
+        current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        
+        # Output the variable value
+        print(current_time)
+      register: python_output
+
+    - name: Set Ansible variable from Python output
+      set_fact:
+        ansible_python_variable: "{{ python_output.stdout }}"
+      
+    - name: Display Ansible variable
+      debug:
+        var: ansible_python_variable
+
 - name: Wait for a file to exist on Windows host
   hosts: murry
   tasks:
