@@ -1,6 +1,12 @@
 - name: Wait for a file to exist on Windows host
   hosts: murry
   tasks:
+    - name: Get current date
+      set_fact:
+        current_date: "{{ lookup('pipe', 'date +%Y-%m-%d') }}"
+    - name: Display current date
+      debug:
+        msg: "Today's date is {{ current_date }}"
     - name: Get the current date in specified format using PowerShell
       win_shell: |
         $date = Get-Date
