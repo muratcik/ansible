@@ -6,12 +6,8 @@
     - name: Run Python script and set variable
       script: |
         #!/usr/bin/python3
-        import datetime
-        
-        # Your Python logic to calculate or generate the variable
-        current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        
-        # Output the variable value
+        import datetime 
+        current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  
         print(current_time)
       register: python_output
 
