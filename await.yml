@@ -5,7 +5,7 @@
   tasks:
     - name: Run Python script and set variable
       script: |
-        #!/usr/bin python3
+        #!/usr/bin/python3
         import datetime
         
         # Your Python logic to calculate or generate the variable
