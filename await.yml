@@ -6,8 +6,7 @@
         $date = Get-Date
         $formattedDate = $date.ToString("MM.dd.yyyy_HH:mm:ss")
         $formattedDate = $formattedDate -replace '[.:]', ''
-        $formattedDate += ".txt"
-        $formattedDate.trim()
+        $formattedDate
       register: result
     - name: Remove carriage return and newline characters
       set_fact:
