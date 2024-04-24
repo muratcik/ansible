@@ -7,11 +7,11 @@
         $formattedDate = $date.ToString("MM.dd.yyyy_HH:mm:ss")
         $formattedDate = $formattedDate -replace '[.:]', ''
         $formattedDate += ".txt"
-        $formattedDate
+        $formattedDate.trim()
       register: result
     - name: Remove carriage return and newline characters
       set_fact:
-        formatted_date: "{{ result.stdout | replace('\r\n\r', '') }}"
+        formatted_date: "{{ result.stdout | replace('\r\n', '') }}"
     - name: Display formatted date
       debug:
         msg: "The formatted date is {{ formatted_date }}"
