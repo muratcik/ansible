@@ -1,27 +1,17 @@
 ---
 
-- name: Create a variable with Python
-  hosts: localhost
-  tasks:
-    - name: Run Python script and set variable
-      script: |
-        #!/usr/bin/python3
-        import datetime 
-        current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')  
-        print(current_time)
-      register: python_output
-
-    - name: Set Ansible variable from Python output
-      set_fact:
-        ansible_python_variable: "{{ python_output.stdout }}"
-      
-    - name: Display Ansible variable
-      debug:
-        var: ansible_python_variable
-
 - name: Wait for a file to exist on Windows host
   hosts: murry
   tasks:
+    - name: Get current date in specified format using PowerShell
+      win_shell: |
+        $date = Get-Date
+        $formattedDate = $date.ToString("MM.dd.yyyy_HH:mm:ss")
+        Write-Output $formattedDate
+      register: result
+    - name: Display formatted date
+      debug:
+        msg: "The formatted date is {{ result.stdout }}"
     - name: Wait for file to exist
       win_wait_for:
         path: D:\delete\delete.txt
