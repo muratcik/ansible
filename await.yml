@@ -1,0 +1,9 @@
+---
+- name: Wait for a file to exist on Windows host
+  hosts: murry
+  tasks:
+    - name: Wait for file to exist
+      win_wait_for:
+        path: D:\delete\delete.txt
+        state: present
+        timeout: 300  # Adjust timeout as needed (in seconds)
