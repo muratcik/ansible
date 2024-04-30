@@ -16,6 +16,6 @@
     - name: Stop-Start services starting with 'SQL'
       win_service:
         name: "{{ item.name }}"
-        state: "stopped"
+        state: "{{ desired_state }}"
         start_mode: "disabled"
       loop: "{{ services.services }}"
