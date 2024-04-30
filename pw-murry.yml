@@ -1,6 +1,9 @@
 ---
 - name: Execute PowerShell command on Windows hosts
   hosts: murry
+  vars:
+    variable_name: "MySQL80"
   tasks:
     - name: Run a simple PowerShell command
-      win_shell: D:\scripts\stop.ps1
+      win_shell: |
+        D:\scripts\stop.ps1 "{{ variable_name }}"
