@@ -1,0 +1,21 @@
+---
+- name: Get info for all services starting with 'SQL'
+  hosts: win
+  collections:
+    - ansible.windows
+  tasks:
+    - name: Get service info
+      win_service_info:
+        name: "SQL*"
+      register: services
+
+    - name: Output service info
+      debug:
+        var: services
+
+    - name: Stop-Start services starting with 'SQL'
+      win_service:
+        name: "{{ item.name }}"
+        state: "{{ desired_state }}"
+        start_mode: "disabled"
+      loop: "{{ services.services }}"
