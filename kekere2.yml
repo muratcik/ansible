@@ -5,4 +5,4 @@
   tasks:    
     - name: Dump variables to console
       debug:
-        msg: "{{ boom_string }}"
+        msg: "{{ my_custom_message }}"
