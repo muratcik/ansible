@@ -5,4 +5,4 @@
   tasks:    
     - name: Dump variables to console
       debug:
-        msg: "{{ ansible_facts.set_stats.my_custom_message }}"
+        msg: "{{ my_custom_message }}"
