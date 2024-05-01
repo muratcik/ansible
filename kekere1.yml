@@ -11,8 +11,3 @@
     - name: Dump concatenated string to console
       debug:
         msg: "{{ concatenated_string }}"
-
-
-    - name: Assign variable to another variable
-      set_fact:
-        global_variable: "{{ concatenated_string }}"    
