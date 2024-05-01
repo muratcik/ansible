@@ -1,0 +1,13 @@
+---
+- name: Concatenate Variable with String
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Concatenate variable with string
+      set_fact:
+        concatenated_string: "Prefix {{ my_variable }} Suffix"
+    
+    - name: Dump concatenated string to console
+      debug:
+        msg: "{{ concatenated_string }}"
