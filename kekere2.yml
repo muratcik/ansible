@@ -1,0 +1,8 @@
+---
+- name: Assign Variable to Another Variable
+  hosts: localhost
+  gather_facts: no
+  tasks:    
+    - name: Dump variables to console
+      debug:
+        msg: "{{ global_variable }}"
