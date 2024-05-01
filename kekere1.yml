@@ -11,3 +11,8 @@
     - name: Dump concatenated string to console
       debug:
         msg: "{{ concatenated_string }}"
+        
+    - name: Set custom stats
+      ansible.builtin.set_stats:
+        data:          
+          my_custom_message: "{{ concatenated_string }}"
