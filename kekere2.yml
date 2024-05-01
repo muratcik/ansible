@@ -5,4 +5,4 @@
   tasks:    
     - name: Dump variables to console
       debug:
-        msg: "{{ global_variable }}"
+        msg: "{{ boom_string }}"
