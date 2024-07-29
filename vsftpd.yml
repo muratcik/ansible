@@ -1,6 +1,5 @@
 ---
 - name: deploy vsftpd
-  hosts: rocky
   tasks: 
   - name: install vsftpd
     yum: name=vsftpd
