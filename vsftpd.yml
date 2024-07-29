@@ -6,3 +6,6 @@
     yum: name=vsftpd
   - name: enable vsftpd
     service: name=vsftpd enabled=true
+  - name: Use a module from community.general collection
+    community.general.ping:
+      data: "Hello from tower"
