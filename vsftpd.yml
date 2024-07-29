@@ -1,5 +1,6 @@
 ---
 - name: deploy vsftpd
+  host: ansible1
   tasks: 
   - name: install vsftpd
     yum: name=vsftpd
