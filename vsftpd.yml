@@ -1,11 +1,13 @@
 ---
 - name: deploy vsftpd
   hosts: ansible1
+  collections:
+    - community.general
   tasks: 
   - name: install vsftpd
     yum: name=vsftpd
   - name: enable vsftpd
     service: name=vsftpd enabled=true
   - name: Use a module from community.general collection
-    community.general.ping:
+    ping:
       data: "Hello from tower"
