@@ -12,14 +12,14 @@
     ping:
       data: "Hello from tower"
   - name: Ensure the Active Directory user exists
-      microsoft.ad.user:
-        name: jdoe
-        password: Passw0rd!
-        state: present
-        user_ou: "OU=Users,DC=example,DC=com"
-        user_principal_name: jdoe@example.com
-        given_name: John
-        surname: Doe
-        display_name: John Doe
-        enabled: yes
+    microsoft.ad.user:
+      name: jdoe
+      password: Passw0rd!
+      state: present
+      user_ou: "OU=Users,DC=example,DC=com"
+      user_principal_name: jdoe@example.com
+      given_name: John
+      surname: Doe
+      display_name: John Doe
+      enabled: yes
       register: user_result    
